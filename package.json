@@ -5,12 +5,13 @@
 	"description": "",
 	"main": "./dist/server.js",
 	"scripts": {
+		"prisma::dev": "prisma migrate dev --name init",
 		"prisma::cycle": "prisma generate && prisma db push",
 		"ts::watch": "tsc --incremental && tsc-alias",
 		"ts::compile": "tsc && tsc-alias",
 		"node::dev": "npm run ts::watch && node ./dist/server.js",
-		"node::build": "npm run prisma::cycle && npm run ts::compile",
-		"start::dev": "npm run prisma::cycle && nodemon -e ts src --exec \"npm run node::dev\"",
+		"node::build": "dotenv -e .env.production npm run prisma::cycle && npm run ts::compile",
+		"start::dev": "dotenv -e .env.development npm run prisma::dev && nodemon -e ts src --exec \"npm run node::dev\"",
 		"start": "npm run node::build && cross-env NODE_ENV=production node ./dist/server.js",
 		"lint": "eslint . --ext .ts"
 	},
@@ -22,6 +23,7 @@
 		"@typescript-eslint/eslint-plugin": "^6.7.0",
 		"@typescript-eslint/parser": "^6.7.0",
 		"cross-env": "^7.0.3",
+		"dotenv-cli": "^7.3.0",
 		"eslint": "^8.49.0",
 		"eslint-config-airbnb-base": "^15.0.0",
 		"eslint-plugin-import": "^2.28.1",
