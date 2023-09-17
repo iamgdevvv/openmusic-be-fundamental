@@ -31,10 +31,12 @@ list things you need to use the software and how to install them.
 
 ### Installing and Running
 
--   CREATE USER postgres_om WITH PASSWORD '0okm9ijn8uhb';
--   ALTER USER postgres_om CREATEDB;
-
 ```bash
+$ psql --username postgres
+postgres=# CREATE USER postgres_om WITH PASSWORD '0okm9ijn8uhb';
+postgres=# ALTER USER postgres_om CREATEDB;
+postgres=# \q
+
 # Clone this repository
 $ git clone https://github.com/iamgdevvv/openmusic-be-fundamental
 
