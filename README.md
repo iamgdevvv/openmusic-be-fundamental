@@ -31,9 +31,8 @@ list things you need to use the software and how to install them.
 
 ### Installing and Running
 
--   Create user in postgresql with username `developer` and password `supersecretpassword`
--   Create database in postgresql with `openmusic`
--   Set database `openmusic` grant and alter for username `developer`
+-   CREATE USER postgres_om WITH PASSWORD '0okm9ijn8uhb';
+-   ALTER USER postgres_om CREATEDB;
 
 ```bash
 # Clone this repository
